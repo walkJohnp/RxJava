@@ -23,6 +23,10 @@ import rx.functions.*;
 import rx.internal.operators.*;
 
 /**
+ * 保存了多种可观察对象，单个和完全的生命周期的钩子，以及调度器钩子
+ *
+ * 观察类下的函数，基本定义了 Observable 生命周期中的每个点的对应的函数，那么在整个生命周期点都可以定义对应的操作
+ *
  * Utility class that holds hooks for various Observable, Single and Completable lifecycle-related
  * points as well as Scheduler hooks.
  * <p>
@@ -325,6 +329,9 @@ public final class RxJavaHooks {
     }
 
     /**
+     * 观察对象创建时执行钩子函数
+     * 
+     * 下面的方法和这个方法类型，都是对被观察对象的每个阶段做处理
      * Hook to call when an Observable is created.
      * @param <T> the value type
      * @param onSubscribe the original OnSubscribe logic

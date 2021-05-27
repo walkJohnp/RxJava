@@ -18,6 +18,12 @@ package rx;
 import rx.subscriptions.Subscriptions;
 
 /**
+ * 订阅，定金,签署
+ *
+ * Subscription 用于从 Observable.subscribe(Subscriber) 方法调用时作为结果返回
+ *
+ * 允许取消订阅
+ *
  * Subscription returns from {@link Observable#subscribe(Subscriber)} to allow unsubscribing.
  * <p>
  * See the utilities in {@link Subscriptions} and the implementations in the {@code rx.subscriptions} package.
@@ -27,6 +33,7 @@ import rx.subscriptions.Subscriptions;
 public interface Subscription {
 
     /**
+     * 订阅者取消订阅，
      * Stops the receipt of notifications on the {@link Subscriber} that was registered when this Subscription
      * was received.
      * <p>
@@ -36,6 +43,8 @@ public interface Subscription {
     void unsubscribe();
 
     /**
+     * 指明是否未订阅
+     *
      * Indicates whether this {@code Subscription} is currently unsubscribed.
      *
      * @return {@code true} if this {@code Subscription} is currently unsubscribed, {@code false} otherwise

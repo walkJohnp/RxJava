@@ -18,8 +18,15 @@ package rx;
 import rx.internal.util.SubscriptionList;
 
 /**
+ * 提供一个接受 来自被观测对象的基于推送通知的机制，允许手动取消对这些被观测对象的订阅
+ *
  * Provides a mechanism for receiving push-based notifications from Observables, and permits manual
  * unsubscribing from these Observables.
+ *
+ * 当Subsciber 调用了 Observable.subscribe()， 那么 Observer就会调用 Subscriber.onNext() 来发送 数据。
+ * 一个正常的流程是 Observable 会立刻调用 Subscriber.onCompleted() 或者是 Subscriber.onError()
+ *
+ *
  * <p>
  * After a Subscriber calls an {@link Observable}'s {@link Observable#subscribe subscribe} method, the
  * {@link Observable} calls the Subscriber's {@link #onNext} method to emit items. A well-behaved

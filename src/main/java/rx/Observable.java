@@ -29,6 +29,8 @@ import rx.schedulers.*;
 import rx.subscriptions.Subscriptions;
 
 /**
+ * 实现了响应式的 Observable类
+ *
  * The Observable class that implements the Reactive Pattern.
  * <p>
  * This class provides methods for subscribing to the Observable as well as delegate methods to the various
@@ -49,6 +51,8 @@ public class Observable<T> {
     final OnSubscribe<T> onSubscribe;
 
     /**
+     * 创建一个可观察的对象并附带一个被订阅时执行的方法
+     *
      * Creates an Observable with a Function to execute when it is subscribed to.
      * <p>
      * <em>Note:</em> Use {@link #unsafeCreate(OnSubscribe)} to create an Observable, instead of this constructor,
@@ -249,6 +253,10 @@ public class Observable<T> {
     }
 
     /**
+     * 内部类, Action1类里有一个call方法
+     *
+     * 当观察者注册时调用 call方法
+     *
      * Invoked when Observable.subscribe is called.
      * @param <T> the output value type
      */

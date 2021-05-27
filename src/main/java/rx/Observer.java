@@ -16,6 +16,10 @@
 package rx;
 
 /**
+ * 观察者抽象
+ *
+ * 提供一个用于接收基于推送的通知的机制
+ *
  * Provides a mechanism for receiving push-based notifications.
  * <p>
  * After an Observer calls an {@link Observable}'s {@link Observable#subscribe subscribe} method, the
@@ -30,6 +34,8 @@ package rx;
 public interface Observer<T> {
 
     /**
+     * Observable 提醒Observer 它已经完成发送 基于推送的通知
+     *
      * Notifies the Observer that the {@link Observable} has finished sending push-based notifications.
      * <p>
      * The {@link Observable} will not call this method if it calls {@link #onError}.
@@ -37,6 +43,10 @@ public interface Observer<T> {
     void onCompleted();
 
     /**
+     * Observable提醒Observer 经历了一个错误状态
+     *
+     * 如果调用了这个方法，之后它将不会再去调用 Observer.onNext() 和 Observer.onCompleted()方法
+     *
      * Notifies the Observer that the {@link Observable} has experienced an error condition.
      * <p>
      * If the {@link Observable} calls this method, it will not thereafter call {@link #onNext} or
@@ -48,6 +58,10 @@ public interface Observer<T> {
     void onError(Throwable e);
 
     /**
+     * 给观察者提供了一个新的数据去观测
+     *
+     * 这个方法可能被 Observable调用多次，如果调用了 onCompleted() 和 onError() 将不会再调用这个方法
+     *
      * Provides the Observer with a new item to observe.
      * <p>
      * The {@link Observable} may call this method 0 or more times.

@@ -23,6 +23,8 @@ import rx.internal.schedulers.*;
 import rx.plugins.*;
 
 /**
+ * 静态工程用于创建调度器
+ *
  * Static factory methods for creating Schedulers.
  * <p>
  * System configuration properties:
@@ -50,9 +52,9 @@ import rx.plugins.*;
  */
 public final class Schedulers {
 
-    private final Scheduler computationScheduler;
-    private final Scheduler ioScheduler;
-    private final Scheduler newThreadScheduler;
+    private final Scheduler computationScheduler; // 计算型调度器
+    private final Scheduler ioScheduler;  // IO 调度器
+    private final Scheduler newThreadScheduler; //新线程调度器
 
     private static final AtomicReference<Schedulers> INSTANCE = new AtomicReference<Schedulers>();
 

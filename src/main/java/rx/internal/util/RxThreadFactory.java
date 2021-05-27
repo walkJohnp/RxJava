@@ -34,6 +34,12 @@ public final class RxThreadFactory extends AtomicLong implements ThreadFactory {
         this.prefix = prefix;
     }
 
+    /**
+     * 1、设定了线程名
+     * 2、设定了线程都是守护线程
+     * @param r
+     * @return
+     */
     @Override
     public Thread newThread(Runnable r) {
         Thread t = new Thread(r, prefix + incrementAndGet());

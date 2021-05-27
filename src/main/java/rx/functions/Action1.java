@@ -16,6 +16,8 @@
 package rx.functions;
 
 /**
+ * 一个只有一个参数的Action对象，所以叫Action1, 数字代表了有几个行为
+ *
  * A one-argument action.
  * @param <T> the first argument type
  */

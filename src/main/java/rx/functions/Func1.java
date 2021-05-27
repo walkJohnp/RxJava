@@ -16,6 +16,8 @@
 package rx.functions;
 
 /**
+ * 代表一个函数只有一个参数
+ *
  * Represents a function with one argument.
  * @param <T> the first argument type
  * @param <R> the result type

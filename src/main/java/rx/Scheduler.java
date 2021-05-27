@@ -22,6 +22,10 @@ import rx.internal.schedulers.*;
 import rx.schedulers.Schedulers;
 
 /**
+ * scheduler 用于调度工作
+ *
+ *
+ *
  * A {@code Scheduler} is an object that schedules units of work. You can find common implementations of this
  * class in {@link Schedulers}.
  */

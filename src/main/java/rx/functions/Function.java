@@ -16,6 +16,8 @@
 package rx.functions;
 
 /**
+ * 所有的行为和函数类的基类
+ *
  * All Func and Action interfaces extend from this.
  * <p>
  * Marker interface to allow instanceof checks.

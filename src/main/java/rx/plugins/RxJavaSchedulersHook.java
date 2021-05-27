@@ -26,6 +26,8 @@ import rx.internal.util.RxThreadFactory;
 import rx.schedulers.Schedulers;
 
 /**
+ * 该插件提供了函数用于自定义 Scheduler
+ *
  * This plugin class provides 2 ways to customize {@link Scheduler} functionality
  * 1.  You may redefine entire schedulers, if you so choose.  To do so, override
  * the 3 methods that return Scheduler (io(), computation(), newThread()).

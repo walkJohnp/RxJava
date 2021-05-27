@@ -16,6 +16,8 @@
 package rx.functions;
 
 /**
+ * 抽象所有的行为(动作）类型
+ *
  * All Action interfaces extend from this.
  * <p>
  * Marker interface to allow instanceof checks.
