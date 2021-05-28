@@ -18,6 +18,8 @@ package rx.subjects;
 import rx.*;
 
 /**
+ * 代表一个对象既是观察者也是被观察者
+ *
  * Represents an object that is both an Observable and an Observer.
  * @param <T> the input value type
  * @param <R> the output value type

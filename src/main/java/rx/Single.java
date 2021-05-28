@@ -30,8 +30,14 @@ import rx.singles.BlockingSingle;
 import rx.subscriptions.Subscriptions;
 
 /**
+ * Single 类对于单个值的响应实现了响应式模式
+ *
+ * Observable 是对流式数据实现了响应式
+ *
  * The Single class implements the Reactive Pattern for a single value response. See {@link Observable} for the
  * implementation of the Reactive Pattern for a stream or vector of values.
+ *
+ * Single和Observable 表现类似，除了只能发送一个成功的值或者一个错误的值
  * <p>
  * {@code Single} behaves the same as {@link Observable} except that it can only emit either a single successful
  * value, or an error (there is no "onComplete" notification as there is for {@link Observable})

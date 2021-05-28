@@ -22,4 +22,8 @@ public class EventStreamTest {
     public void constructorShouldBePrivate() {
         TestUtil.checkUtilityClass(EventStream.class);
     }
+
+    public static void main(String[] args) {
+        System.out.println("hello");
+    }
 }

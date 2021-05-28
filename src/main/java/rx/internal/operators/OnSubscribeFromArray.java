@@ -21,6 +21,11 @@ import java.util.concurrent.atomic.AtomicLong;
 import rx.*;
 import rx.Observable.OnSubscribe;
 
+/**
+ * 订阅数组类型的数据
+ *
+ * @param <T>
+ */
 public final class OnSubscribeFromArray<T> implements OnSubscribe<T> {
     final T[] array;
     public OnSubscribeFromArray(T[] array) {
