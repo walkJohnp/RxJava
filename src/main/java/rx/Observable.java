@@ -48,6 +48,9 @@ import rx.subscriptions.Subscriptions;
  */
 public class Observable<T> {
 
+    /**
+     * 并订阅时执行的方法
+     */
     final OnSubscribe<T> onSubscribe;
 
     /**
@@ -1991,6 +1994,8 @@ public class Observable<T> {
     }
 
     /**
+     * 把数据变成可观察对象，并把数据里的元素发送出去
+     *
      * Converts an Array into an Observable that emits the items in the Array.
      * <p>
      * <img width="640" height="315" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/from.png" alt="">

@@ -25,6 +25,7 @@ import rx.internal.util.UtilityFunctions;
 /**
  * Utility functions for use with backpressure.
  *
+ *  用来使用背压的通用函数
  */
 public final class BackpressureUtils {
     /**

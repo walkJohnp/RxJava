@@ -329,7 +329,7 @@ public final class RxJavaHooks {
     }
 
     /**
-     * 观察对象创建时执行钩子函数
+     * 被观察对象创建时执行钩子函数
      * 
      * 下面的方法和这个方法类型，都是对被观察对象的每个阶段做处理
      * Hook to call when an Observable is created.

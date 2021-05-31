@@ -27,8 +27,11 @@ import rx.subjects.*;
 import rx.subscriptions.Subscriptions;
 
 /**
+ * 创建一个具有跳跃频率和大小范围的源序列的值窗口
+ *
  * Creates windows of values into the source sequence with skip frequency and size bounds.
  *
+ * 如果 skip == size, 那么窗口就不会重叠。 否则窗口可能重叠和不连续
  * If skip == size then the windows are non-overlapping, otherwise, windows may overlap
  * or can be discontinuous. The returned Observable sequence is cold and need to be
  * consumed while the window operation is in progress.
@@ -49,6 +52,7 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
 
     @Override
     public Subscriber<? super T> call(Subscriber<? super Observable<T>> child) {
+        // 如果skip == size, 则创建一个精准窗口
         if (skip == size) {
             WindowExact<T> parent = new WindowExact<T>(child, size);
 
@@ -56,7 +60,7 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
             child.setProducer(parent.createProducer());
 
             return parent;
-        } else
+        } else  // 创建跳跃窗口
         if (skip > size) {
             WindowSkip<T> parent = new WindowSkip<T>(child, size, skip);
 
@@ -65,7 +69,7 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
 
             return parent;
         }
-
+        // 创建跳跃窗口
         WindowOverlap<T> parent = new WindowOverlap<T>(child, size, skip);
 
         child.add(parent.cancel);
@@ -75,6 +79,11 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
 
     }
 
+    /**
+     * 精准窗口
+     *
+     * @param <T>
+     */
     static final class WindowExact<T> extends Subscriber<T> implements Action0 {
         final Subscriber<? super Observable<T>> actual;
 
@@ -168,6 +177,11 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
         }
     }
 
+    /**
+     *
+     *
+     * @param <T>
+     */
     static final class WindowSkip<T> extends Subscriber<T> implements Action0 {
         final Subscriber<? super Observable<T>> actual;
 
@@ -283,6 +297,10 @@ public final class OperatorWindowWithSize<T> implements Operator<Observable<T>, 
         }
     }
 
+    /**
+     * 窗口重叠
+     * @param <T>
+     */
     static final class WindowOverlap<T> extends Subscriber<T> implements Action0 {
         final Subscriber<? super Observable<T>> actual;
 
