@@ -63,6 +63,27 @@ public class ObservableTests {
     }
 
     @Test
+    public void fromArray2() {
+        String[] items = new String[] { "one", "two", "three" };
+        Observable.from(items).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                System.out.println(s);
+            }
+        });
+    }
+
+    @Test
     public void fromIterable() {
         ArrayList<String> items = new ArrayList<String>();
         items.add("one");

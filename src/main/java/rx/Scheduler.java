@@ -58,6 +58,8 @@ public abstract class Scheduler {
     public abstract Worker createWorker();
 
     /**
+     * 用于在单线程或者event loop 里执行action 的有序调度器
+     *
      * Sequential Scheduler for executing actions on a single thread or event loop.
      * <p>
      * Unsubscribing the {@link Worker} cancels all outstanding work and allows resources cleanup.

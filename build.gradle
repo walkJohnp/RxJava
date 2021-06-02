@@ -10,17 +10,15 @@ buildscript {
 description = 'RxJava: Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.'
 
 apply plugin: 'java'
-//apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
-//apply plugin: 'nebula.rxjava-project'
+apply plugin: 'maven-publish'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-//    signature 'org.codehaus.mojo.signature:java16:1.1@signature'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
@@ -73,42 +71,6 @@ jacocoTestReport {
 build.dependsOn jacocoTestReport
 
 
-//pmd {
-//    toolVersion = '5.4.2'
-//    ignoreFailures = true
-//    sourceSets = [sourceSets.main]
-//    ruleSets = []
-//    ruleSetFiles = files('pmd.xml')
-//}
-
-//pmdMain {
-//    reports {
-//        html.enabled = true
-//        xml.enabled = true
-//    }
-//}
-
-//task pmdPrint(dependsOn: 'pmdMain') << {
-//    File file = new File('build/reports/pmd/main.xml')
-//    if (file.exists()) {
-//
-//        println("Listing first 100 PMD violations")
-//
-//        file.eachLine { line, count ->
-//            if (count <= 100) {
-//               println(line)
-//            }
-//        }
-//
-//    } else {
-//        println("PMD file not found.")
-//    }
-//}
-
-//build.dependsOn pmdPrint
-
-
-
 findbugs {
     ignoreFailures true
     toolVersion = '3.0.1'
@@ -121,5 +83,24 @@ findbugsMain {
     reports {
         html.enabled = false // Findbugs can only have on report enabled
         xml.enabled = true
+    }
+}
+
+task sourceJar (type:Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId  'io.reactivex'
+            artifactId 'rxjava'
+            version '1.2.0-doc'
+            from components.java
+            artifact(sourceJar) {
+                classifier = 'sources'
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@ import rx.schedulers.*;
 import rx.subscriptions.Subscriptions;
 
 /**
- * 实现了响应式的 Observable类
+ * 实现了响应式的 Observable类,表示这是一个被观察的对象或者是生产者
  *
  * The Observable class that implements the Reactive Pattern.
  * <p>
@@ -49,7 +49,7 @@ import rx.subscriptions.Subscriptions;
 public class Observable<T> {
 
     /**
-     * 并订阅时执行的方法
+     * 添加订阅者时执行的方法
      */
     final OnSubscribe<T> onSubscribe;
 

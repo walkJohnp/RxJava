@@ -49,6 +49,7 @@ import rx.subscriptions.Subscriptions;
  */
 public final class BlockingObservable<T> {
 
+    // 组合模式
     private final Observable<? extends T> o;
 
     /** Constant to indicate the onStart method should be called. */

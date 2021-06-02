@@ -572,7 +572,7 @@ public class Single<T> {
      * @see <a href="http://reactivex.io/documentation/operators/from.html">ReactiveX operators documentation: From</a>
      */
     public static <T> Single<T> from(Future<? extends T> future, Scheduler scheduler) {
-        return from(future).subscribeOn(scheduler);
+        return (Single<T>) from(future).subscribeOn(scheduler);
     }
 
     /**

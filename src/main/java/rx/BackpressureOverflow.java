@@ -18,6 +18,8 @@ package rx;
 import rx.exceptions.MissingBackpressureException;
 
 /**
+ * 处理backpressure buffer 溢出的 策略和默认实现
+ *
  * Generic strategy and default implementations to deal with backpressure buffer overflows.
  * 
  * @since 1.3
