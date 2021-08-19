@@ -19,8 +19,8 @@ package rx.functions;
  * 代表一个函数只有一个参数
  *
  * Represents a function with one argument.
- * @param <T> the first argument type
- * @param <R> the result type
+ * @param <T> the first argument type 第一个参数
+ * @param <R> the result type 返回的结果
  */
 public interface Func1<T, R> extends Function {
     R call(T t);

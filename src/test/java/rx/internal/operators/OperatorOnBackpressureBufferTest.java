@@ -37,6 +37,18 @@ import rx.schedulers.Schedulers;
 
 public class OperatorOnBackpressureBufferTest {
 
+    static final Observable<Long> infinite = Observable.unsafeCreate(new OnSubscribe<Long>() {
+
+        @Override
+        public void call(Subscriber<? super Long> s) {
+            long i = 0;
+            while (!s.isUnsubscribed()) {
+                s.onNext(i++);
+            }
+        }
+
+    });
+
     @Test
     public void testNoBackpressureSupport() {
         TestSubscriber<Long> ts = new TestSubscriber<Long>();
@@ -226,18 +238,6 @@ public class OperatorOnBackpressureBufferTest {
             }
         });
     }
-
-    static final Observable<Long> infinite = Observable.unsafeCreate(new OnSubscribe<Long>() {
-
-        @Override
-        public void call(Subscriber<? super Long> s) {
-            long i = 0;
-            while (!s.isUnsubscribed()) {
-                s.onNext(i++);
-            }
-        }
-
-    });
 
     private static final Action0 THROWS_NON_FATAL = new Action0() {
 
